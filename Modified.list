@@ -1,0 +1,87 @@
+
+# > 🍎 Apple
+# > Use Apple products on enterprise networks:
+# > https://support.apple.com/en-us/101555
+# > https://support.apple.com/zh-cn/101555
+# > If your Apple devices aren't getting Apple push notifications:
+# > https://support.apple.com/en-us/102266
+# > https://support.apple.com/zh-cn/102266
+IP-CIDR,17.0.0.0/8,✅Direct,no-resolve
+IP-CIDR6,2620:149:a44::/48,✅Direct,no-resolve
+IP-CIDR6,2403:300:a42::/48,✅Direct,no-resolve
+IP-CIDR6,2403:300:a51::/48,✅Direct,no-resolve
+IP-CIDR6,2a01:b740:a42::/48,✅Direct,no-resolve
+DOMAIN,captive.apple.com,✅Direct // WiFiSpot
+DOMAIN,setup.icloud.com,🍎Apple
+DOMAIN-SUFFIX,itunes.apple.com,⏬AppDownload
+DOMAIN-SUFFIX,itunes.com,⏬AppDownload
+DOMAIN-SUFFIX,apple-dns.net,⏬AppDownload // (?)
+DOMAIN-SUFFIX,itun.es,⏬AppDownload // (?)
+
+# > Google Play Store
+DOMAIN-SUFFIX,services.googleapis.cn,✅Direct
+DOMAIN-SUFFIX,xn--ngstr-lra8j.com,✅Direct
+# > Other Google service
+DOMAIN,imap.gmail.com,📮Gmail
+DOMAIN,www.google.cn,🪜Proxy
+DOMAIN-SUFFIX,google.cn,✅Direct // Street View in Google Maps App
+
+# > Popular Apps
+USER-AGENT,WeChat*,✅Direct
+USER-AGENT,MicroMessenger*,✅Direct
+
+# > 随手记App
+IP-CIDR,61.155.184.0/24,🚫Adblock,no-resolve #!IOS-ONLY
+DOMAIN,tj.nineton.cn,🚫Adblock #!IOS-ONLY
+DOMAIN,api.feidee.net,✅Direct #!IOS-ONLY
+DOMAIN,userapi.feidee.net,✅Direct #!IOS-ONLY
+DOMAIN,data.feidee.net,✅Direct #!IOS-ONLY
+DOMAIN,sync.feidee.net,✅Direct #!IOS-ONLY
+DOMAIN,sync1.feidee.net,✅Direct #!IOS-ONLY
+DOMAIN-SUFFIX,feidee.com,🚫Adblock #!IOS-ONLY
+DOMAIN-SUFFIX,cardniu.com,🚫Adblock #!IOS-ONLY
+DOMAIN-SUFFIX,ssjlicai.com,🚫Adblock #!IOS-ONLY
+
+# > 在线小说
+DOMAIN,www.novel543.com,🪜Proxy
+DOMAIN-SUFFIX,piaotian.com,🪜Proxy
+DOMAIN-SUFFIX,kongganglianmeng.com,✅Direct
+DOMAIN-SUFFIX,zongheng.com,✅Direct
+DOMAIN-SUFFIX,bxwx6.org,🪜Proxy
+DOMAIN-SUFFIX,faaqgje.icu,🚫Adblock
+DOMAIN-SUFFIX,yuzhousk.com,✅Direct
+
+# > 其他
+DOMAIN-SUFFIX,nssurge.com,🪜Proxy
+DOMAIN-SUFFIX,weather.com,🪜Proxy
+DOMAIN-SUFFIX,bjango.com,🪜Proxy
+DOMAIN,docstransfer.com,✅Direct // Documents.app Transfer
+DOMAIN-SUFFIX,ssl-images-amazon.com,✅Direct
+DOMAIN-SUFFIX,cn.amazon.com,✅Direct
+DOMAIN,cache.video.iqiyi.com,✅Direct // 爱奇艺境外检测
+DOMAIN-SUFFIX,inter.iqiyi.com,✅Direct // 爱奇艺境外检测
+DOMAIN,ip.istatmenus.app,✅Direct
+DOMAIN,ip4.istatmenus.app,✅Direct
+DOMAIN,ip6.istatmenus.app,✅Direct
+DOMAIN,locationlookup.istatmenus.app,✅Direct
+#DOMAIN,licensing.istatmenus.app,✅Direct
+#DOMAIN,weather.istatmenus.app,✅Direct
+DOMAIN-SUFFIX,appstorrent.ru,✅Direct
+DOMAIN,api.vk.com,✅Direct // appstorrent.ru download
+DOMAIN-SUFFIX,userapi.com,✅Direct // appstorrent.ru download
+DOMAIN-SUFFIX,macwk.com,🪜Proxy
+DOMAIN-SUFFIX,2q10.com,✅Direct // 每日科技旗下相关App
+USER-AGENT,CLKit*,🚫Adblock // MyWeather Ads
+DOMAIN-SUFFIX,booking.com,🪜Proxy
+DOMAIN-SUFFIX,booking.cn,🪜Proxy
+DOMAIN-SUFFIX,imarkr.com,✅Direct
+DOMAIN-SUFFIX,ted.com,✅Direct
+DOMAIN-SUFFIX,vk.com,✅Direct
+DOMAIN-SUFFIX,miot-spec.com,🪜Proxy
+DOMAIN-SUFFIX,jsdelivr.net,🪜Proxy
+DOMAIN-SUFFIX,ugnas.com,✅Direct
+DOMAIN-SUFFIX,ugreen.com,✅Direct
+DOMAIN-WILDCARD,stun*.chat.bilibili.com,REJECT
+
+DOMAIN-SUFFIX,120399.xyz,✅Direct
+DOMAIN-SUFFIX,wsgw-rewrite.com,✅Direct
