@@ -1,0 +1,36 @@
+#!name=Advertising_All
+#!desc=去掉广告:Advertising_All_No_Resolve
+#!arguments=Reject:REJECT-TINYGIF,Proxy:🪜Proxy,Direct:✅Direct
+
+[Rule]
+
+# > Override the Ruleset
+DOMAIN, cn.bing.com, {{{Direct}}}, pre-matching, extended-matching
+DOMAIN-SUFFIX, crashlytics.com, {{{Direct}}}, pre-matching, extended-matching
+#; DOMAIN-SUFFIX, api.jr.mi.com, {{{Direct}}}, pre-matching, extended-matching  // 小米商城、小米金融、厚积保险等
+DOMAIN-SUFFIX, my-material.zone1.meitudata.com, {{{Direct}}}, pre-matching, extended-matching  // 美图相机图片资源加载
+#; DOMAIN-SUFFIX, hmma.baidu.com, {{{Direct}}}, pre-matching, extended-matching
+DOMAIN-SUFFIX, nsclick.baidu.com, {{{Direct}}}, pre-matching, extended-matching
+DOMAIN-SUFFIX, sclick.baidu.com, {{{Direct}}}, pre-matching, extended-matching
+DOMAIN, newvector.map.baidu.com, {{{Direct}}}, pre-matching, extended-matching  // Satellite Map in Baidu map
+#; DOMAIN, sv.map.baidu.com, {{{Direct}}}, pre-matching, extended-matching  // StreetView in Baidu map
+DOMAIN-SUFFIX, duiba.com.cn, {{{Direct}}}, pre-matching, extended-matching  // 兑吧
+DOMAIN, stdl.qq.com, {{{Direct}}}, pre-matching, extended-matching  // 腾讯
+DOMAIN, sensors.cloud.tencent.com, {{{Direct}}}, pre-matching, extended-matching  // 腾讯云
+DOMAIN, mcs.zijieapi.com, {{{Direct}}}, pre-matching, extended-matching  // 飞书插件
+DOMAIN, mon.zijieapi.com, {{{Direct}}}, pre-matching, extended-matching  // 飞书插件
+DOMAIN, t.uc.cn, {{{Direct}}}, pre-matching, extended-matching  // uc短链接
+URL-REGEX, ^https?:\/\/pdds\.ucweb\.com\/download, {{{Direct}}}  // uc系的App下载
+DOMAIN, image.uczzd.cn, {{{Direct}}}, pre-matching, extended-matching  // 夸克日报图片
+DOMAIN, msg.qy.net, {{{Direct}}}, pre-matching, extended-matching  // 爱奇艺播放页正常加载
+DOMAIN-SUFFIX, igetget.com, {{{Direct}}}, pre-matching, extended-matching  // 得到App
+DOMAIN-SUFFIX, umiwi.com, {{{Direct}}}, pre-matching, extended-matching  // 得到App
+#; DOMAIN, tobapplog.volceapplog.com, {{{Direct}}}, pre-matching, extended-matching  // 得到App
+
+#; DOMAIN, httpdns.yunxindns.com, {{{Direct}}}, pre-matching, extended-matching
+#; IP-CIDR, 203.107.1.0/24, {{{Direct}}}, no-resolve, pre-matching, extended-matching
+
+
+#; RULE-SET, https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/Hijacking/Hijacking.list, {{{Reject}}}, pre-matching, extended-matching
+#; RULE-SET, https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/Privacy/Privacy_All_No_Resolve.list, {{{Reject}}}, pre-matching, extended-matching
+RULE-SET, https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/Advertising/Advertising_All_No_Resolve.list, {{{Reject}}}, pre-matching, extended-matching

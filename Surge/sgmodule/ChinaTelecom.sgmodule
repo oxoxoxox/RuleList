@@ -1,0 +1,9 @@
+#!name=中国电信
+#!desc=中国电信流量话费查询
+#!system=ios
+
+[MITM]
+hostname = %APPEND% e.dlife.cn
+
+[Script]
+电信登录地址 = type=http-request,pattern=^https:\/\/e\.dlife\.cn\/user\/loginMiddle,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/dompling/Script/master/10000/index.js,script-update-interval=0

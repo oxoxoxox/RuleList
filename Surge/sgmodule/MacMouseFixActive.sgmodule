@@ -1,0 +1,9 @@
+#!name=Mac Mouse Fix Active
+#!desc=Mac Mouse Fix Active Tools
+#!system=mac
+
+[Script]
+MacMouseFixActive = type=http-response,requires-body=1,max-size=1024,pattern=^http[s]?:\/\/api\.gumroad\.com\/v2\/licenses\/verify,script-path=scripts/MacMouseFixActive.js
+
+[MITM]
+hostname= %APPEND% api.gumroad.com

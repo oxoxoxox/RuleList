@@ -1,0 +1,24 @@
+# NAME: Apple
+
+DOMAIN,downloaddispatch.itunes.apple.com  // iOS App Store download
+DOMAIN,osxapps.itunes.apple.com  // Mac App Store download(!)
+DOMAIN,iosapps.itunes.apple.com  // iOS App Store download(!)
+DOMAIN-SUFFIX,mzstatic.com  // Store content and apps from websites and alternative marketplaces
+DOMAIN-SUFFIX,apps.apple.com  // Store content such as apps, books, and music
+DOMAIN-SUFFIX,appldnld.apple.com  // All OS Software updates
+DOMAIN-SUFFIX,gg.apple.com  // All OS Software updates
+DOMAIN-SUFFIX,gs.apple.com  // All OS Software updates
+DOMAIN-SUFFIX,ig.apple.com  // macOS updates
+DOMAIN-SUFFIX,oscdn.apple.com  // macOS Recovery
+DOMAIN-SUFFIX,osrecovery.apple.com  // macOS Recovery
+DOMAIN-SUFFIX,skl.apple.com  // macOS updates
+DOMAIN-SUFFIX,swcdn.apple.com  // macOS updates(!)
+DOMAIN-SUFFIX,swdist.apple.com  // macOS updates
+DOMAIN-SUFFIX,swdownload.apple.com  // macOS updates
+DOMAIN-SUFFIX,swscan.apple.com  // macOS updates
+DOMAIN-SUFFIX,updates-http.cdn-apple.com  // All OS Software updates
+DOMAIN-SUFFIX,updates.cdn-apple.com  // All OS Software updates(!)
+DOMAIN-SUFFIX,swdownload.apple.com  // macOS updates
+DOMAIN-SUFFIX,audiocontentdownload.apple.com  // GarageBand downloadable content
+DOMAIN-SUFFIX,devimages-cdn.apple.com  // Xcode downloadable components
+DOMAIN-SUFFIX,download.developer.apple.com  // Xcode downloadable components

@@ -1,0 +1,10 @@
+# https://raw.githubusercontent.com/VirgilClyne/iRingo/main/RuleSet/LookUp.Wikipedia.list
+# > Look Up (Only for Wikipedia@macOS, Surge Enhance Mode enabled required)
+PROCESS-NAME,LookupViewService
+PROCESS-NAME,/System/Library/PrivateFrameworks/Lookup.framework/Versions/A/XPCServices/LookupViewService.xpc/Contents/MacOS/LookupViewService
+DOMAIN,lookup-api.apple.com  // Wikipedia in Dictionary
+DOMAIN,lookup-api.apple.com.edgekey.net  // Wikipedia in Dictionary
+DOMAIN,e16991.b.akamaiedge.net  // Wikipedia in Dictionary
+DOMAIN-SUFFIX,smoot.apple.cn  // LookupViewService
+DOMAIN-SUFFIX,smoot.apple.com  // LookupViewService
+DOMAIN-SUFFIX,smoot.apple.com.cn  // LookupViewService

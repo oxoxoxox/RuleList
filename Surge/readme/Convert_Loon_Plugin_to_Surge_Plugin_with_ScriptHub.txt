@@ -1,0 +1,76 @@
+https://scripthub.vercel.app
+
+高级操作(使用代码处理内容) --> 处理原始内容(代码)
+
+
+function transformText(input) {
+    const sections = input.split(/\n(?=\[)/);
+    let header = sections.shift();
+    const argumentSection = sections.find(section => section.startsWith("[Argument]"));
+    const scriptSectionIndex = sections.findIndex(section => section.startsWith("[Script]"));
+
+    const argumentsLines = argumentSection
+        .replace("[Argument]", "")
+        .trim()
+        .split("\n");
+    const argumentsString = argumentsLines
+        .map(line => line.split("=")[0].trim())
+        .map(key => `${key}:true`)
+        .join(",");
+
+    header += `\n#!arguments=${argumentsString}\n`;
+
+    if (scriptSectionIndex !== -1) {
+        sections[scriptSectionIndex] = sections[scriptSectionIndex].replace(
+            /\[(.*?)\]/g,
+            (_, keys) =>
+                `[${keys
+                    .split(",")
+                    .map(key => `{{${key.trim()}}}`)
+                    .join(",")}]`
+        );
+    }
+
+    return [header, ...sections].join("\n");
+}
+body=transformText(body);
+
+
+
+
+
+如何使用JS语言，将第一段文本，转换为第二段文本的格式？
+
+第一段文本：
+#!name=网易云音乐去广告
+[Argument]
+MY=switch,false,true,tag=[隐藏底栏]漫游标签,desc=
+DT=switch,false,true,tag=[隐藏底部]笔记标签,desc=
+FX=switch,false,true,tag=[隐藏底部]发现标签,desc=
+PRGG=switch,false,true,tag=[隐藏首页]问候语,desc=
+PRRK=switch,false,true,tag=[隐藏首页]排行榜,desc=
+[Rule]
+DOMAIN,httpdns.music.163.com,REJECT
+DOMAIN,httpdns.n.netease.com,REJECT
+[Rewrite]
+^https?:\/\/(?:ipv4|interface\d?)\.music\.163\.com\/e?
+[Script]
+http-response ^https?:\/\/(ipv4|interface\d?)\.music\.163\.com\/e?api\/(homepage\/block\/page|link\/page\/rcmd\/(resource\/show|block\/resource\/multi\/refresh)) script-path=https://kelee.one/Resource/Script/NeteaseCloudMusic/NeteaseCloudMusic_remove_ads.js,requires-body=true,binary-body-mode=true,timeout=20,argument=[{PRGG},{PRRK}],tag=主页
+http-response ^https?:\/\/(ipv4|interface\d?)\.music\.163\.com\/e?api\/link\/home\/framework\/tab script-path=https://kelee.one/Resource/Script/NeteaseCloudMusic/NeteaseCloudMusic_remove_ads.js,requires-body=true,binary-body-mode=true,timeout=20,argument=[{MY},{DT},{FX}],tag=底部选项卡
+[MitM]
+hostname=interface.music.163.com,interface?.music.163.com,ipv4.music.163.com
+
+
+第二段文本：
+#!name=网易云音乐去广告
+#!arguments=MY:true,DT:true,FX:true,PRGG:true,PRRK:true
+[Rule]
+DOMAIN,httpdns.music.163.com,REJECT
+DOMAIN,httpdns.n.netease.com,REJECT
+[Rewrite]
+^https?:\/\/(?:ipv4|interface\d?)\.music\.163\.com\/e?
+[Script]
+http-response ^https?:\/\/(ipv4|interface\d?)\.music\.163\.com\/e?api\/(homepage\/block\/page|link\/page\/rcmd\/(resource\/show|block\/resource\/multi\/refresh)) script-path=https://kelee.one/Resource/Script/NeteaseCloudMusic/NeteaseCloudMusic_remove_ads.js,requires-body=true,binary-body-mode=true,timeout=20,argument=[{{{PRGG}}},{{{PRRK}}}],tag=主页
+http-response ^https?:\/\/(ipv4|interface\d?)\.music\.163\.com\/e?api\/link\/home\/framework\/tab script-path=https://kelee.one/Resource/Script/NeteaseCloudMusic/NeteaseCloudMusic_remove_ads.js,requires-body=true,binary-body-mode=true,timeout=20,argument=[{{{MY}}},{{{DT}}},{{{FX}}}],tag=底部选项卡
+[MitM]
+hostname=interface.music.163.com,interface?.music.163.com,ipv4.music.163.com

@@ -1,0 +1,35 @@
+#!name=OfficeAutoSwitch
+#!desc=切换DNS，添加路由器DNS，公司黑名单网站走代理
+#!system=mac
+#!arguments=Proxy: 🪜Proxy,Office: Tailscale-Wsl-Clash
+
+[General]
+dns-server = %APPEND% system
+
+# Office blacklist website
+[Rule]
+# ### Office
+# DOMAIN-SUFFIX,thundersoft.com,{{{Office}}},notification-text="SECURITY! Company website!",notification-interval=60
+DOMAIN-SUFFIX,thundersoft.com,{{{Office}}}
+DOMAIN-SUFFIX,qiye.163.com,{{{Office}}}
+DOMAIN-SUFFIX,bytegoofy.com,{{{Office}}}
+DOMAIN-SUFFIX,geniie.net,{{{Office}}}
+DOMAIN-SUFFIX,dndev.net,{{{Office}}}
+DOMAIN-SUFFIX,subaru.co.jp,{{{Office}}}
+DOMAIN-SUFFIX,micdev.jp,{{{Office}}}
+DOMAIN-SUFFIX,mobis.co.kr,{{{Office}}}
+DOMAIN-SUFFIX,bce.baidu.com,{{{Office}}}
+
+# ### Whitelist
+#DOMAIN,wxapp.tc.qq.com,{{{Proxy}}}  // 微信输入法emoji
+DOMAIN-SUFFIX,xiaohongshu.com,{{{Proxy}}}
+DOMAIN-SUFFIX,xhscdn.com,{{{Proxy}}}
+
+[Host]
+# ### Office website start
+*.thundersoft.com = server:syslib
+*.geniie.net = server:syslib
+*.dndev.net = server:syslib
+*.micdev.jp = server:syslib
+*.qiye.163.com = server:syslib
+# ### Office website end

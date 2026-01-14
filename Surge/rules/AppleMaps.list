@@ -1,0 +1,10 @@
+# NAME: Apple
+
+DOMAIN,gs-loc.apple.com  // geod & locationd
+DOMAIN,gs-loc-cn.apple.com  // geod & locationd
+DOMAIN-KEYWORD,ssl.ls.apple.com  // geod & locationd
+DOMAIN-SUFFIX,apple-mapkit.com  // geod & locationd
+USER-AGENT,geod*
+USER-AGENT,locationd*
+PROCESS-NAME,locationd
+PROCESS-NAME,com.apple.geod

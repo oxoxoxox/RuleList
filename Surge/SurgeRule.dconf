@@ -1,0 +1,333 @@
+[Rule]
+# ; RULE-SET, SYSTEM, DIRECT  // See this for detail list: https://manual.nssurge.com/rule/ruleset.html
+
+# > Pay
+# ; RULE-SET, https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/Stripe/Stripe.list, 🤖AI, extended-matching
+DOMAIN-SUFFIX,paddle.com,✅Direct
+DOMAIN-KEYWORD,stripe,💰Pay,extended-matching
+RULE-SET,https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Surge/PayPal/PayPal.list,💰Pay,extended-matching
+# > AI
+RULE-SET,rules/AI.list,🤖AI,extended-matching
+; RULE-SET,rules/OpenAI.list,🤖AI,extended-matching
+; RULE-SET,rules/Gemini.list,🤖AI,extended-matching
+; RULE-SET,rules/Claude.list,🤖AI,extended-matching
+
+# > For V2EX
+DOMAIN-SUFFIX,v2ex.com,ForV2EX,extended-matching
+
+# > 🍎 Apple
+# > Use Apple products on enterprise networks:
+# > https://support.apple.com/en-us/101555
+# > https://support.apple.com/zh-cn/101555
+# > If your Apple devices aren't getting Apple push notifications:
+# > https://support.apple.com/en-us/102266
+# > https://support.apple.com/zh-cn/102266
+IP-CIDR,17.0.0.0/8,✅Direct,no-resolve
+IP-CIDR6,2620:149:a44::/48,✅Direct,no-resolve
+IP-CIDR6,2403:300:a42::/48,✅Direct,no-resolve
+IP-CIDR6,2403:300:a51::/48,✅Direct,no-resolve
+IP-CIDR6,2a01:b740:a42::/48,✅Direct,no-resolve
+DOMAIN,captive.apple.com,✅Direct,extended-matching // WiFiSpot
+RULE-SET,rules/AppleDownload.list,⏬AppDownload,extended-matching
+RULE-SET,rules/AppleMail.list,✅Direct,extended-matching
+RULE-SET,rules/Apple.list,🍎Apple,extended-matching
+RULE-SET,rules/AppleID.list,🍎Apple,extended-matching
+RULE-SET,rules/AppleSiri.list,🍎Apple,extended-matching
+RULE-SET,rules/AppleMaps.list,✅Direct,extended-matching
+RULE-SET,rules/AppleNews.list,🍎Apple,extended-matching
+RULE-SET,rules/LookUp.Wikipedia.list,🍎Apple,extended-matching
+RULE-SET,rules/AppleTestFlight.list,🍎Apple,extended-matching
+RULE-SET,rules/AppleTV.list,🎬Media,extended-matching
+RULE-SET,rules/AppleAppStore.list,⏬AppDownload,extended-matching
+RULE-SET,rules/AppleMusic.list,✅Direct,extended-matching
+DOMAIN,setup.icloud.com,🍎Apple,extended-matching
+RULE-SET,rules/AppleiCloud.list,☁️iCloudSync,extended-matching
+PROCESS-NAME,Dictionary,🍎Apple #!MACOS-ONLY
+DOMAIN-SUFFIX,itunes.apple.com,⏬AppDownload,extended-matching
+DOMAIN-SUFFIX,itunes.com,⏬AppDownload,extended-matching
+DOMAIN-SUFFIX,apple-dns.net,⏬AppDownload,extended-matching // (?)
+DOMAIN-SUFFIX,itun.es,⏬AppDownload,extended-matching // (?)
+
+# > Google Play Store
+DOMAIN-SUFFIX,services.googleapis.cn,✅Direct,extended-matching
+DOMAIN-SUFFIX,xn--ngstr-lra8j.com,✅Direct,extended-matching
+# ; PROCESS-NAME, com.android.vending, 🪜Proxy
+# > Other Google service
+# ; PROCESS-NAME, "Backup and Sync", 🪜Proxy #!MACOS-ONLY
+PROCESS-NAME,"Google Drive",🪜Proxy #!MACOS-ONLY
+PROCESS-NAME,"Google Drive Helper",🪜Proxy #!MACOS-ONLY
+DOMAIN,imap.gmail.com,📮Gmail,extended-matching
+DOMAIN,www.google.cn,🪜Proxy,extended-matching
+DOMAIN-SUFFIX,google.cn,✅Direct,extended-matching // Street View in Google Maps App
+
+# > Parallels Desktop
+AND,((PROCESS-NAME,Google Chrome Helper), (DOMAIN-SUFFIX,parallels.com)),🪜Proxy #!MACOS-ONLY
+AND,((OR,((PROCESS-NAME,*com.apple.WebKit.Networking*), (USER-AGENT,*iPhone OS*Safari*))), (DOMAIN,docs.parallels.com)),🪜Proxy #!MACOS-ONLY
+AND,((OR,((PROCESS-NAME,*com.apple.WebKit.Networking*), (USER-AGENT,*iPhone OS*Safari*))), (DOMAIN,download.parallels.com)),🪜Proxy #!MACOS-ONLY
+AND,((OR,((PROCESS-NAME,*com.apple.WebKit.Networking*), (USER-AGENT,*iPhone OS*Safari*))), (DOMAIN,kb.parallels.com)),🪜Proxy #!MACOS-ONLY
+AND,((OR,((PROCESS-NAME,*com.apple.WebKit.Networking*), (USER-AGENT,*iPhone OS*Safari*))), (DOMAIN,link.parallels.com)),🪜Proxy #!MACOS-ONLY
+AND,((OR,((PROCESS-NAME,*com.apple.WebKit.Networking*), (USER-AGENT,*iPhone OS*Safari*))), (DOMAIN,www.parallels.com)),🪜Proxy #!MACOS-ONLY
+# ; AND, ((PROCESS-NAME, /System/Volumes/Preboot/Cryptexes/Incoming/OS/System/Library/Frameworks/WebKit.framework/Versions/A/XPCServices/com.apple.WebKit.Networking.xpc/Contents/MacOS/com.apple.WebKit.Networking), (DOMAIN, download.parallels.com)), 🪜Proxy  #!MACOS-ONLY
+DOMAIN-SUFFIX,account.parallels.cn,REJECT #!MACOS-ONLY
+DOMAIN-SUFFIX,account.parallels.com,REJECT #!MACOS-ONLY
+DOMAIN-SUFFIX,desktop.parallels.com,REJECT #!MACOS-ONLY
+DOMAIN-SUFFIX,download.parallels.com,REJECT #!MACOS-ONLY
+DOMAIN-SUFFIX,update.parallels.com,REJECT #!MACOS-ONLY
+DOMAIN-SUFFIX,desktop.parallels.com.cdn.cloudflare.net,REJECT #!MACOS-ONLY
+DOMAIN-SUFFIX,download.parallels.com.cdn.cloudflare.net,REJECT #!MACOS-ONLY
+DOMAIN-SUFFIX,update.parallels.com.cdn.cloudflare.net,REJECT #!MACOS-ONLY
+DOMAIN-SUFFIX,reportus.parallels.com,REJECT #!MACOS-ONLY
+DOMAIN-SUFFIX,pax-manager.myparallels.com,REJECT #!MACOS-ONLY
+DOMAIN-SUFFIX,myparallels.com,REJECT #!MACOS-ONLY
+DOMAIN-SUFFIX,my.parallels.com,REJECT #!MACOS-ONLY
+DOMAIN-SUFFIX,parallels.com,REJECT #!MACOS-ONLY
+DOMAIN-SUFFIX,parallels.cn,REJECT #!MACOS-ONLY
+DOMAIN-SUFFIX,parallels.de,REJECT #!MACOS-ONLY
+DOMAIN-SUFFIX,parallels.es,REJECT #!MACOS-ONLY
+DOMAIN-SUFFIX,parallels.fr,REJECT #!MACOS-ONLY
+DOMAIN-SUFFIX,parallels.nl,REJECT #!MACOS-ONLY
+DOMAIN-SUFFIX,parallels.pt,REJECT #!MACOS-ONLY
+DOMAIN-SUFFIX,parallels.ru,REJECT #!MACOS-ONLY
+DOMAIN-SUFFIX,parallelskorea.com,REJECT #!MACOS-ONLY
+
+# > Popular Apps
+# ; PROCESS-NAME, AdobeGCClient, REJECT-DROP #!MACOS-ONLY
+PROCESS-NAME,"Bartender 5",REJECT-DROP #!MACOS-ONLY
+PROCESS-NAME,"Astah Professional",REJECT-DROP #!MACOS-ONLY
+DOMAIN-SUFFIX,change-vision.dvt,REJECT-DROP // astah_professional  #!MACOS-ONLY
+USER-AGENT,astah_professional*,REJECT-DROP #!MACOS-ONLY
+# ; PROCESS-NAME, DropboxMacUpdate*, REJECT-DROP #!MACOS-ONLY
+# ; USER-AGENT, DropboxMacUpdate*, REJECT-DROP #!MACOS-ONLY
+# ; PROCESS-NAME, Dropbox, 🪜Proxy #!MACOS-ONLY
+# ; PROCESS-NAME, /Applications/Trae.app/Contents/MacOS/Electron, 🪜Proxy #!MACOS-ONLY
+PROCESS-NAME,WizNote*,🪜Proxy #!MACOS-ONLY
+PROCESS-NAME,"Lark Helper",✅Direct #!MACOS-ONLY
+PROCESS-NAME,ToDesk,✅Direct #!MACOS-ONLY
+PROCESS-NAME,ToDesk_Service,✅Direct #!MACOS-ONLY
+PROCESS-NAME,"绿联云 Helper",✅Direct #!MACOS-ONLY
+PROCESS-NAME,pgTunnelStatic,✅Direct #!MACOS-ONLY
+# ; PROCESS-NAME, Tailscale, ✅Direct  #!MACOS-ONLY
+PROCESS-NAME,syncthing,✅Direct #!MACOS-ONLY
+PROCESS-NAME,easytier-gui,✅Direct #!MACOS-ONLY
+USER-AGENT,WeChat*,✅Direct
+USER-AGENT,MicroMessenger*,✅Direct
+
+# > 迅雷App
+PROCESS-NAME,com.xunlei.Thunder.DownloadService,✅Direct #!MACOS-ONLY
+PROCESS-NAME,DownloadService,✅Direct #!MACOS-ONLY
+DOMAIN-SUFFIX,widemotion.net,🚫Adblock #!MACOS-ONLY
+DOMAIN-SUFFIX,massmotionmedia.com,🚫Adblock #!MACOS-ONLY
+DOMAIN-SUFFIX,kanimg.com,🚫Adblock #!MACOS-ONLY
+DOMAIN-SUFFIX,live.xunlei.com,🚫Adblock #!MACOS-ONLY
+DOMAIN,mobile-login.xunlei.com,✅Direct #!MACOS-ONLY
+DOMAIN,act.vip.xunlei.com,✅Direct #!MACOS-ONLY
+DOMAIN,down.sandai.net,✅Direct #!MACOS-ONLY
+DOMAIN,m.sjzhushou.com,🚫Adblock #!MACOS-ONLY
+DOMAIN,m.xunlei.com,✅Direct #!MACOS-ONLY
+DOMAIN-SUFFIX,n0808.com,🚫Adblock #!MACOS-ONLY
+DOMAIN-SUFFIX,changyinshow.com,🚫Adblock #!MACOS-ONLY
+DOMAIN-SUFFIX,izuiyou.com,🚫Adblock #!MACOS-ONLY
+DOMAIN,api-shoulei-ssl.xunlei.com,🚫Adblock #!MACOS-ONLY
+DOMAIN-KEYWORD,ssl.xunlei.com,✅Direct #!MACOS-ONLY
+USER-AGENT,iThunder*,🚫Adblock #!MACOS-ONLY
+
+# > 随手记App
+IP-CIDR,61.155.184.0/24,🚫Adblock,no-resolve #!IOS-ONLY
+DOMAIN,tj.nineton.cn,🚫Adblock #!IOS-ONLY
+DOMAIN,api.feidee.net,✅Direct #!IOS-ONLY
+DOMAIN,userapi.feidee.net,✅Direct #!IOS-ONLY
+DOMAIN,data.feidee.net,✅Direct #!IOS-ONLY
+DOMAIN,sync.feidee.net,✅Direct #!IOS-ONLY
+DOMAIN,sync1.feidee.net,✅Direct #!IOS-ONLY
+DOMAIN-SUFFIX,feidee.com,🚫Adblock #!IOS-ONLY
+DOMAIN-SUFFIX,cardniu.com,🚫Adblock #!IOS-ONLY
+DOMAIN-SUFFIX,ssjlicai.com,🚫Adblock #!IOS-ONLY
+
+# > 在线小说
+DOMAIN,www.novel543.com,🪜Proxy
+DOMAIN-SUFFIX,piaotian.com,🪜Proxy
+DOMAIN-SUFFIX,kongganglianmeng.com,✅Direct
+DOMAIN-SUFFIX,zongheng.com,✅Direct
+DOMAIN-SUFFIX,bxwx6.org,🪜Proxy
+DOMAIN-SUFFIX,faaqgje.icu,🚫Adblock
+DOMAIN-SUFFIX,yuzhousk.com,✅Direct
+
+# > 其他
+DOMAIN-SUFFIX,nssurge.com,🪜Proxy
+DOMAIN-SUFFIX,weather.com,🪜Proxy
+DOMAIN-SUFFIX,bjango.com,🪜Proxy
+DOMAIN,docstransfer.com,✅Direct // Documents.app Transfer
+DOMAIN-SUFFIX,ssl-images-amazon.com,✅Direct
+DOMAIN-SUFFIX,cn.amazon.com,✅Direct
+DOMAIN,cache.video.iqiyi.com,✅Direct // 爱奇艺境外检测
+DOMAIN-SUFFIX,inter.iqiyi.com,✅Direct // 爱奇艺境外检测
+DOMAIN,ip.istatmenus.app,✅Direct
+DOMAIN,ip4.istatmenus.app,✅Direct
+DOMAIN,ip6.istatmenus.app,✅Direct
+DOMAIN,locationlookup.istatmenus.app,✅Direct
+#DOMAIN,licensing.istatmenus.app,✅Direct
+#DOMAIN,weather.istatmenus.app,✅Direct
+DOMAIN-SUFFIX,appstorrent.ru,✅Direct
+DOMAIN,api.vk.com,✅Direct // appstorrent.ru download
+DOMAIN-SUFFIX,userapi.com,✅Direct // appstorrent.ru download
+DOMAIN-SUFFIX,macwk.com,🪜Proxy
+DOMAIN-SUFFIX,2q10.com,✅Direct // 每日科技旗下相关App
+USER-AGENT,CLKit*,🚫Adblock // MyWeather Ads
+DOMAIN-SUFFIX,booking.com,🪜Proxy
+DOMAIN-SUFFIX,booking.cn,🪜Proxy
+DOMAIN-SUFFIX,imarkr.com,✅Direct
+DOMAIN-SUFFIX,ted.com,✅Direct
+DOMAIN-SUFFIX,vk.com,✅Direct
+DOMAIN-SUFFIX,miot-spec.com,🪜Proxy
+DOMAIN-SUFFIX,jsdelivr.net,🪜Proxy
+DOMAIN-SUFFIX,ugnas.com,✅Direct
+DOMAIN-SUFFIX,ugreen.com,✅Direct
+DOMAIN-WILDCARD,stun*.chat.bilibili.com,REJECT
+
+DOMAIN-SUFFIX,120399.xyz,✅Direct
+DOMAIN-SUFFIX,wsgw-rewrite.com,✅Direct
+
+DOMAIN-SUFFIX,yqmm.xyz,✅Direct #!MACOS-ONLY // 元气满满V3线路
+DOMAIN-SUFFIX,the-best-airport.com,✅Direct #!MACOS-ONLY // 一元机场线路
+
+
+# > Ruleset
+RULE-SET,rules/Domestic.list,✅Direct,extended-matching
+RULE-SET,rules/Direct.list,✅Direct,extended-matching
+
+# ; RULE-SET, https://limbopro.com/Adblock4limbo_surge.list, 🚫Adblock, extended-matching
+
+RULE-SET,rules/Teams.list,🗂️Microsoft,extended-matching
+RULE-SET,rules/Microsoft.list,🗂️Microsoft,extended-matching
+IP-CIDR,95.161.76.100/31,REJECT-NO-DROP,no-resolve // Telegram loading problem
+RULE-SET,rules/Telegram.list,🪜Proxy,extended-matching
+RULE-SET,rules/Speedtest.list,🪜Proxy,extended-matching
+
+RULE-SET,https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/GlobalMedia/GlobalMedia_All_No_Resolve.list,🎬Media,extended-matching
+RULE-SET,https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/Global/Global_All_No_Resolve.list,🪜Proxy,extended-matching
+
+RULE-SET,https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/ChinaMedia/ChinaMedia.list,✅Direct,extended-matching
+
+# ; RULE-SET, https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/China/China_All_No_Resolve.list, ✅Direct, extended-matching
+DOMAIN-SET,https://raw.githubusercontent.com/carrnot/china-domain-list/release/domain.txt,✅Direct,extended-matching
+# DOMAIN-SET,https://raw.githubusercontent.com/pluwen/china-domain-allowlist/refs/heads/main/allow-list.sorl,✅Direct,extended-matching
+
+# > Asia countries website
+DOMAIN-SUFFIX,tw,🪜Proxy,extended-matching // Remote DNS for website not in China
+DOMAIN-SUFFIX,jp,🪜Proxy,extended-matching // Remote DNS for website not in China
+DOMAIN-SUFFIX,cn,✅Direct,extended-matching // China website
+# GEOIP,CN,✅Direct // China IP website
+RULE-SET,https://raw.githubusercontent.com/missuo/ASN-China/main/ASN.China.list,✅Direct
+
+RULE-SET,LAN,✅Direct // See this for detail list: https://manual.nssurge.com/rule/ruleset.html
+
+FINAL,🪜Proxy,dns-failed
+
+[Host]
+# ; DOMAIN-SET:https://example.com/domains.txt = server:https://doh.com/dns-query
+# ; RULE-SET:https://example.com/rules.txt = server:https://doh.com/dns-query
+
+sh.114so.cn = 127.0.0.1
+homeassistant.local = 10.0.0.12
+
+ip6-localhost = ::1
+ip6-loopback = ::1
+
+securelogin.com.cn = server:syslib
+*.securelogin.com.cn = server:syslib
+captive.apple.com = server:syslib
+hotspot.cslwifi.com = server:syslib
+*.m2m = server:syslib
+injections.adguard.org = server:syslib
+local.adguard.org = server:syslib
+*.bogon = server:syslib
+cdn.jsdelivr.net = cdn.jsdelivr.net.cdn.cloudflare.net
+
+# ; routerlogin.net = server:syslib
+RULE-SET:https://ruleset.skk.moe/Modules/Rules/sukka_local_dns_mapping/router.conf = server:syslib
+
+# ; *.lan = server:syslib
+RULE-SET:https://ruleset.skk.moe/Modules/Rules/sukka_local_dns_mapping/lan.conf = server:syslib
+
+# ; 223.5.5.5     --> https://dns.alidns.com/dns-query
+# ; 119.29.29.29  --> https://doh.pub/dns-query
+
+# ; RULE-SET: host/alibaba.list = server:223.5.5.5
+RULE-SET:https://ruleset.skk.moe/Modules/Rules/sukka_local_dns_mapping/alibaba.conf = server:quic://dns.alidns.com:853
+RULE-SET:https://ruleset.skk.moe/Modules/Rules/sukka_local_dns_mapping/baidu.conf = server:180.76.76.76
+RULE-SET:https://ruleset.skk.moe/Modules/Rules/sukka_local_dns_mapping/bilibili.conf = server:https://doh.pub/dns-query
+RULE-SET:https://ruleset.skk.moe/Modules/Rules/sukka_local_dns_mapping/bytedance.conf = server:180.184.2.2
+RULE-SET:https://ruleset.skk.moe/Modules/Rules/sukka_local_dns_mapping/tencent.conf = server:https://doh.pub/dns-query
+RULE-SET:https://ruleset.skk.moe/Modules/Rules/sukka_local_dns_mapping/xiaomi.conf = server:https://doh.pub/dns-query
+
+# > 京东
+*.jd.com = server:syslib // 京东
+*.360buyimg.com = server:syslib // 京东 静态资源
+*.jdcloud.com = server:syslib // 京东云
+*.jcloudstatic.com = server:syslib // 京东云 缓存和存储
+*.jcloudstatic.net = server:syslib // 京东云 静态资源
+*.jdgslb.com = server:syslib // 京东云 全局负载均衡
+3.cn = server:syslib // 京东短网址
+
+# > other top china website
+*.126.com = server:syslib
+*.126.net = server:syslib
+*.127.net = server:syslib
+*.dianping.com = server:syslib
+*.douban.com = server:syslib
+*.ifengimg.com = server:syslib
+*.iqiyi.com = server:syslib
+*.iqiyipic.com = server:syslib
+*.netease.com = server:syslib
+*.meituan.com = server:syslib
+*.meituan.net = server:syslib
+*.sohu.com = server:syslib
+*.sina.com.cn = server:syslib
+*.weibo.com = server:syslib
+*.ykimg.com = server:syslib
+*.zhimg.com = server:syslib
+*.ugreen.com = server:syslib
+*.ugnas.com = server:syslib
+# > syncthing
+*.syncthing.net = server:223.5.5.5
+
+# ; * = server:https://dns.alidns.com/dns-query
+
+[URL Rewrite]
+^(http|https):\/\/(www.)?(g|google)\.cn https://www.google.com 302
+# ; ^https?://www.google.co.jp https://www.google.com 302
+^https?://www.google.co.kr https://www.google.com 302
+^https?://www.google.com.vn https://www.google.com 302
+^https?://www.google.com.ua https://www.google.com 302
+# ; # > Redirect HTTP to HTTPS
+# ; ^https?:\/\/(www.)?mi\.com\/ https://www.mi.com/ 302
+# ; ^https?:\/\/you\.163\.com\/ https://you.163.com/ 302
+# ; # > IGN China to IGN Global
+# ; ^https?:\/\/(www.)?ign\.xn--fiqs8s\/ http://cn.ign.com/ccpref/us 302
+
+[Header Rewrite]
+http-request ^*.bdimg.com header-del Referer
+http-request ^*.qpic.cn header-replace User-Agent "WeChat/6.5.22.32 CFNetwork/889.9 Darwin/17.2.0"
+http-request ^*.qpic.cn header-del Referer
+http-request ^*.ph.126.net header-del Referer
+http-request ^*.zhimg.com header-del Referer
+http-request ^*.cnbetacdn.com header-del Referer
+http-request ^*.zhiding.cn header-del Referer
+http-request ^*.c114.com.cn header-del Referer
+http-request ^https?://www.biquge.com.tw header-del Cookie
+
+[Map Local]
+# ; 来源：https://community.nssurge.com/d/1213-reject/2
+# ;   Surge 内置了多个不同的 REJECT 策略，不同策略间有一些细微的差别：
+# ;     REJECT：拒绝该请求，当连接类型为 HTTP 时，会返回一个错误页面。（该行为可被 show-error-page-for-reject 参数控制）
+# ;     REJECT-TINYGIF：拒绝该请求，当连接类型为 HTTP 时，返回一个 1px 的 GIF 图片响应。若为其他类型连接则直接断开。该策略主要用于 Web 广告屏蔽。
+# ;     REJECT-DROP：拒绝该请求，与 REJECT 不同的是，该策略将静默抛弃请求。因为部分程序有着十分暴力的重试逻辑，连接失败后会立刻进行重试，导致请求风暴。
+# ;     REJECT-NO-DROP：一般情况下与 REJECT 策略相同，区别在于使用该规则时将不会触发上述自动升级的行为。
+# ;     如果发往某主机名的请求短时间内大量触发 REJECT/REJECT-TINYGIF 策略（当前版本的阈值为 30 秒内 10 次），为了避免产生大量资源浪费，Surge 将自动升级 REJECT 策略为 REJECT-DROP 策略。
+# ;   REJECT屏蔽广告时带来的影响：
+# ;     REJECT-TINYGIF 影响最小，切换视频时大概停滞0.3秒；
+# ;     REJECT 影响较大，停滞大概1秒；
+# ;     REJECT-DROP 影响最大，视频将卡住（完全无法载入）；
+# ;     REJECT-NO-DROP 影响持续较大，是REJECT的持续版；
+# ; 以下配置等效于 REJECT-TINYGIF + REJECT-NO-DROP
+# ; (https?:\/\/[\w-]+.googlevideo.com\/.+?)(&ctier=L|\/ctier\/L)((&|\/).+?)(, ctier|%2Cctier)((, |%2C).+) $1$3$6

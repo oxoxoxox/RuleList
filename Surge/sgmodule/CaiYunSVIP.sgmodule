@@ -1,0 +1,12 @@
+#!name=彩云天气SVIP
+#!desc=彩云天气SVIP
+#!system=ios
+
+[Script]
+彩云天气SVIP = type=http-response,requires-body=1,max-size=0,pattern=^http[s]?:\/\/biz\.(caiyunapp|cyapi)\.(com|cn)\/(membership_rights|v2\/user),script-path=scripts/CaiYunSVIP.js
+
+[MITM]
+hostname= %APPEND% *.caiyunapp.com, *.cyapi.com, *.caiyunapp.cn, *.cyapi.cn
+
+[URL Rewrite]
+^https:\/\/ad\.caiyunapp\.com\/ _ reject
