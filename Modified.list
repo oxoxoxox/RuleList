@@ -31,16 +31,16 @@ USER-AGENT,WeChat*,✅Direct
 USER-AGENT,MicroMessenger*,✅Direct
 
 # > 随手记App
-IP-CIDR,61.155.184.0/24,🚫Adblock,no-resolve #!IOS-ONLY
-DOMAIN,tj.nineton.cn,🚫Adblock #!IOS-ONLY
-DOMAIN,api.feidee.net,✅Direct #!IOS-ONLY
-DOMAIN,userapi.feidee.net,✅Direct #!IOS-ONLY
-DOMAIN,data.feidee.net,✅Direct #!IOS-ONLY
-DOMAIN,sync.feidee.net,✅Direct #!IOS-ONLY
-DOMAIN,sync1.feidee.net,✅Direct #!IOS-ONLY
-DOMAIN-SUFFIX,feidee.com,🚫Adblock #!IOS-ONLY
-DOMAIN-SUFFIX,cardniu.com,🚫Adblock #!IOS-ONLY
-DOMAIN-SUFFIX,ssjlicai.com,🚫Adblock #!IOS-ONLY
+IP-CIDR,61.155.184.0/24,🚫Adblock,no-resolve
+DOMAIN,tj.nineton.cn,🚫Adblock
+DOMAIN,api.feidee.net,✅Direct
+DOMAIN,userapi.feidee.net,✅Direct
+DOMAIN,data.feidee.net,✅Direct
+DOMAIN,sync.feidee.net,✅Direct
+DOMAIN,sync1.feidee.net,✅Direct
+DOMAIN-SUFFIX,feidee.com,🚫Adblock
+DOMAIN-SUFFIX,cardniu.com,🚫Adblock
+DOMAIN-SUFFIX,ssjlicai.com,🚫Adblock
 
 # > 在线小说
 DOMAIN,www.novel543.com,🪜Proxy
